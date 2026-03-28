@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pure Love — Daily Islamic Blessings for Your Baby</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #f9e0e0;
+    --rose: #e8736a;
+    --deep: #3d0a0a;
+    --cream: #fff8f6;
+    --soft: #fdf0ef;
+    --text: #4a1a1a;
+    --muted: #9e6060;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  body.arabic {
+    font-family: 'Amiri', serif;
+    direction: rtl;
+  }
+
+  /* LANGUAGE SWITCHER */
+  .lang-bar {
+    background: var(--deep);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem 3rem;
+    gap: 0.5rem;
+  }
+
+  body.arabic .lang-bar { justify-content: flex-start; }
+
+  .lang-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.7);
+    padding: 0.25rem 1rem;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .lang-btn.arabic-btn { font-family: 'Amiri', serif; font-size: 0.95rem; }
+
+  .lang-btn.active {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: white;
+  }
+
+  .lang-btn:hover { border-color: var(--rose); color: white; }
+
+  /* NAV */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 3rem;
+    background: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #f0d0d0;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--deep);
+    text-decoration: none;
+  }
+
+  body.arabic .nav-logo { font-family: 'Amiri', serif; }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  body.arabic .nav-links a { letter-spacing: 0; font-size: 1rem; }
+
+  .nav-links a:hover { color: var(--rose); }
+
+  .nav-cta {
+    background: var(--rose);
+    color: white !important;
+    padding: 0.5rem 1.4rem;
+    border-radius: 50px;
+    font-weight: 700 !important;
+    text-transform: none !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    background: radial-gradient(ellipse at 50% 0%, #fce8e8 0%, var(--cream) 70%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fcd3d3 0%, transparent 70%);
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.5;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: #fce0e0;
+    color: var(--rose);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    margin-bottom: 1.5rem;
+  }
+
+  body.arabic .hero-tag { letter-spacing: 0; font-size: 1rem; }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    line-height: 1.1;
+    color: var(--deep);
+    margin-bottom: 1.2rem;
+  }
+
+  body.arabic .hero h1 { font-family: 'Amiri', serif; line-height: 1.4; }
+
+  .hero h1 em { font-style: italic; color: var(--rose); }
+
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+  }
+
+  body.arabic .hero p { font-size: 1.25rem; line-height: 2; }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--rose);
+    color: white;
+    padding: 1rem 2.4rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(232, 115, 106, 0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(232, 115, 106, 0.5);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--rose);
+    padding: 1rem 2.4rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid var(--rose);
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { background: var(--rose); color: white; }
+
+  /* MESSAGE SECTION */
+  .message-section {
+    padding: 6rem 2rem;
+    background: var(--soft);
+    text-align: center;
+  }
+
+  .section-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+
+  body.arabic .section-label { letter-spacing: 0; font-size: 1rem; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--deep);
+    margin-bottom: 1rem;
+  }
+
+  body.arabic .section-title { font-family: 'Amiri', serif; line-height: 1.5; }
+
+  .section-sub {
+    color: var(--muted);
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  body.arabic .section-sub { font-size: 1.15rem; line-height: 2; }
+
+  .message-cards {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .message-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem 1.8rem;
+    max-width: 280px;
+    text-align: left;
+    box-shadow: 0 4px 30px rgba(200, 100, 100, 0.08);
+    border: 1px solid #f5dede;
+    transition: transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  body.arabic .message-card { text-align: right; }
+
+  .message-card::before {
+    content: '♥';
+    position: absolute;
+    bottom: -10px;
+    right: 10px;
+    font-size: 5rem;
+    color: #fce8e8;
+    line-height: 1;
+  }
+
+  .message-card:hover { transform: translateY(-6px); }
+
+  .card-day {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+
+  body.arabic .card-day { letter-spacing: 0; font-size: 0.95rem; }
+
+  .card-month {
+    display: inline-block;
+    background: #fce8e8;
+    color: var(--rose);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  body.arabic .card-month { letter-spacing: 0; font-size: 0.9rem; font-family: 'Amiri', serif; }
+
+  .card-message {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  body.arabic .card-message { font-family: 'Amiri', serif; font-size: 1.1rem; line-height: 2; font-style: normal; }
+
+  /* HOW IT WORKS */
+  .how-section {
+    padding: 6rem 2rem;
+    text-align: center;
+    background: var(--cream);
+  }
+
+  .steps {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 3rem auto 0;
+  }
+
+  .step { flex: 1; min-width: 220px; max-width: 260px; }
+
+  .step h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--deep);
+    margin-bottom: 0.6rem;
+  }
+
+  body.arabic .step h3 { font-family: 'Amiri', serif; font-size: 1.4rem; }
+
+  .step p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  body.arabic .step p { font-size: 1.05rem; line-height: 2; }
+
+  /* FEATURES */
+  .features-section {
+    padding: 6rem 2rem;
+    background: var(--deep);
+    color: white;
+    text-align: center;
+  }
+
+  .features-section .section-title { color: white; }
+  .features-section .section-label { color: #f0a0a0; }
+  .features-section .section-sub { color: #c09090; }
+
+  /* CTA */
+  .cta-section {
+    padding: 6rem 2rem;
+    background: radial-gradient(ellipse at center, #fce0e0 0%, var(--cream) 70%);
+    text-align: center;
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--deep);
+    margin-bottom: 1rem;
+  }
+
+  body.arabic .cta-section h2 { font-family: 'Amiri', serif; line-height: 1.6; }
+
+  .cta-section p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    font-weight: 300;
+  }
+
+  body.arabic .cta-section p { font-size: 1.2rem; line-height: 2; }
+
+  /* FOOTER */
+  footer {
+    background: var(--deep);
+    color: #c09090;
+    text-align: center;
+    padding: 2.5rem 2rem;
+    font-size: 0.85rem;
+  }
+
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  body.arabic footer .footer-logo { font-family: 'Amiri', serif; }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* HIDE/SHOW language content */
+  .en { display: block; }
+  .ar { display: none; }
+  body.arabic .en { display: none; }
+  body.arabic .ar { display: block; }
+
+  /* inline elements */
+  span.en { display: inline; }
+  span.ar { display: none; }
+  body.arabic span.en { display: none; }
+  body.arabic span.ar { display: inline; }
+
+  @media (max-width: 600px) {
+    nav { padding: 1rem 1.2rem; }
+    .nav-links { display: none; }
+    .hero { padding: 3rem 1.2rem; }
+    .lang-bar { padding: 0.5rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE BAR -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('en')">English</button>
+  <button class="lang-btn arabic-btn" onclick="setLang('ar')">العربية</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Pure Love</a>
+  <ul class="nav-links">
+    <li><a href="#messages"><span class="en">Messages</span><span class="ar">الرسائل</span></a></li>
+    <li><a href="#how"><span class="en">How It Works</span><span class="ar">كيف يعمل</span></a></li>
+    <li><a href="#features"><span class="en">About</span><span class="ar">عن التطبيق</span></a></li>
+    <li><a href="#download" class="nav-cta"><span class="en">Coming Soon</span><span class="ar">قريباً</span></a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="en">270 days of Islamic blessings</span>
+      <span class="ar">٢٧٠ يوماً من البركات الإسلامية</span>
+    </div>
+    <h1>
+      <span class="en">A daily du'a<br>for your <em>little one</em></span>
+      <span class="ar">دعاء يومي<br>لـ <em>صغيرك</em></span>
+    </h1>
+    <p>
+      <span class="en">One beautiful Islamic blessing, every single day of your pregnancy — rooted in the Quran and the wisdom of our faith.</span>
+      <span class="ar">بركة إسلامية جميلة كل يوم من أيام حملك — مستوحاة من القرآن الكريم وحكمة ديننا الحنيف.</span>
+    </p>
+    <div class="hero-buttons">
+      <a href="#messages" class="btn-primary">
+        <span class="en">See the Journey</span>
+        <span class="ar">اكتشفي الرحلة</span>
+      </a>
+      <a href="#how" class="btn-secondary">
+        <span class="en">How It Works</span>
+        <span class="ar">كيف يعمل</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MESSAGE PREVIEW -->
+<section class="message-section" id="messages">
+  <div class="section-label">
+    <span class="en">Daily Blessings</span>
+    <span class="ar">البركات اليومية</span>
+  </div>
+  <h2 class="section-title">
+    <span class="en">A message waiting for you,<br>every morning</span>
+    <span class="ar">رسالة تنتظرك<br>كل صباح</span>
+  </h2>
+  <p class="section-sub">
+    <span class="en">Beautiful words from the Quran and Islamic wisdom, tied to every stage of your baby's growth</span>
+    <span class="ar">كلمات جميلة من القرآن الكريم والحكمة الإسلامية، مرتبطة بكل مرحلة من مراحل نمو طفلك</span>
+  </p>
+
+  <div class="message-cards">
+
+    <div class="message-card fade-in">
+      <div class="card-month"><span class="en">Month 1</span><span class="ar">الشهر الأول</span></div>
+      <div class="card-day"><span class="en">Day 1</span><span class="ar">اليوم الأول</span></div>
+      <p class="card-message">
+        <span class="en">"Indeed, it is Allah who forms you in the womb however He wills. A new soul has begun, and with it, a new chapter of His infinite mercy."</span>
+        <span class="ar">"إِنَّ اللَّهَ يَخْلُقُكُمْ فِي بُطُونِ أُمَّهَاتِكُمْ. روحٌ جديدة بدأت، ومعها فصلٌ جديد من رحمته اللانهائية."</span>
+      </p>
+    </div>
+
+    <div class="message-card fade-in">
+      <div class="card-month"><span class="en">Month 3</span><span class="ar">الشهر الثالث</span></div>
+      <div class="card-day"><span class="en">Day 72</span><span class="ar">اليوم ٧٢</span></div>
+      <p class="card-message">
+        <span class="en">"Allah shapes your little one with care and wisdom. May this child grow to be among the righteous, a light for this ummah."</span>
+        <span class="ar">"الله يشكّل صغيرك بعناية وحكمة. اللهم اجعل هذا الطفل من الصالحين، نوراً لهذه الأمة."</span>
+      </p>
+    </div>
+
+    <div class="message-card fade-in">
+      <div class="card-month"><span class="en">Month 5</span><span class="ar">الشهر الخامس</span></div>
+      <div class="card-day"><span class="en">Day 140</span><span class="ar">اليوم ١٤٠</span></div>
+      <p class="card-message">
+        <span class="en">"Your baby can hear now. Let your recitation of Quran be the first gift to reach their heart — SubhanAllah, what a miracle."</span>
+        <span class="ar">"طفلك يسمع الآن. دعي تلاوتك للقرآن الكريم تكون أول هدية تصل إلى قلبه — سبحان الله، يا له من معجزة."</span>
+      </p>
+    </div>
+
+    <div class="message-card fade-in">
+      <div class="card-month"><span class="en">Month 9</span><span class="ar">الشهر التاسع</span></div>
+      <div class="card-day"><span class="en">Day 265</span><span class="ar">اليوم ٢٦٥</span></div>
+      <p class="card-message">
+        <span class="en">"Rabbi hab li min ladunka dhurriyyatan tayyibah — O Lord, grant me from Yourself righteous offspring. Your du'a has been heard."</span>
+        <span class="ar">"رَبِّ هَبْ لِي مِن لَّدُنكَ ذُرِّيَّةً طَيِّبَةً — دعاؤك قد سُمع. قريباً ستحمل نعمة الله بين يديك."</span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="section-label">
+    <span class="en">Simple & Beautiful</span>
+    <span class="ar">بسيط وجميل</span>
+  </div>
+  <h2 class="section-title">
+    <span class="en">How It Works</span>
+    <span class="ar">كيف يعمل التطبيق</span>
+  </h2>
+  <p class="section-sub">
+    <span class="en">Start in seconds. Feel the barakah every day.</span>
+    <span class="ar">ابدئي في ثوانٍ. اشعري بالبركة كل يوم.</span>
+  </p>
+
+  <div class="steps">
+    <div class="step fade-in">
+      <h3><span class="en">Enter Your Due Date</span><span class="ar">أدخلي تاريخ ولادتك المتوقع</span></h3>
+      <p>
+        <span class="en">We count back 9 months and build your personalized timeline of Islamic blessings.</span>
+        <span class="ar">نحسب ٩ أشهر للخلف ونبني لك جدولاً مخصصاً من البركات الإسلامية.</span>
+      </p>
+    </div>
+    <div class="step fade-in">
+      <h3><span class="en">Receive Daily Blessings</span><span class="ar">استقبلي البركات اليومية</span></h3>
+      <p>
+        <span class="en">Every morning a new du'a or Quranic reflection unlocks — tied to exactly where your baby is in their growth.</span>
+        <span class="ar">كل صباح يُفتح دعاء جديد أو تأمل قرآني — مرتبط بمرحلة نمو طفلك بالضبط.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="section-label">
+    <span class="en">Everything You Need</span>
+    <span class="ar">كل ما تحتاجينه</span>
+  </div>
+  <h2 class="section-title">
+    <span class="en">Made with love, for Muslim mamas</span>
+    <span class="ar">صُنع بحب، للأمهات المسلمات</span>
+  </h2>
+  <p class="section-sub">
+    <span class="en">More than just messages — a full Islamic pregnancy companion</span>
+    <span class="ar">أكثر من مجرد رسائل — رفيق إسلامي كامل لرحلة الحمل</span>
+  </p>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="download">
+  <h2>
+    <span class="en">Begin your <em style="font-style:italic;color:var(--rose);">Pure Love</em> journey</span>
+    <span class="ar">ابدئي رحلة <em style="font-style:normal;color:var(--rose);">الحب الخالص</em></span>
+  </h2>
+  <p>
+    <span class="en">A free, beautiful daily Islamic companion for every mama-to-be — coming soon to iOS & Android</span>
+    <span class="ar">رفيق إسلامي يومي مجاني وجميل لكل أم تنتظر — قريباً على iOS وAndroid</span>
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Pure Love</div>
+  <p>
+    <span class="en">Made with ♥ for every Muslim mama and her little miracle</span>
+    <span class="ar">صُنع بـ ♥ لكل أم مسلمة ومعجزتها الصغيرة</span>
+  </p>
+  <p style="margin-top:0.5rem;font-size:0.75rem;">© 2026 Pure Love App · Privacy Policy · Terms</p>
+</footer>
+
+<script>
+  function setLang(lang) {
+    const body = document.body;
+    const html = document.documentElement;
+    const btns = document.querySelectorAll('.lang-btn');
+
+    if (lang === 'ar') {
+      body.classList.add('arabic');
+      html.setAttribute('dir', 'rtl');
+      html.setAttribute('lang', 'ar');
+    } else {
+      body.classList.remove('arabic');
+      html.setAttribute('dir', 'ltr');
+      html.setAttribute('lang', 'en');
+    }
+
+    btns.forEach(btn => btn.classList.remove('active'));
+    document.querySelector(lang === 'ar' ? '.arabic-btn' : '.lang-btn:first-child').classList.add('active');
+  }
+
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
